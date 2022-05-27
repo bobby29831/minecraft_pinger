@@ -29,13 +29,20 @@ struct PlayerIds {
 #[tokio::main]
 async fn main() {
     let args: Vec<String> = env::args().collect();
-    let ip = &args[1];
-    let base_url = "https://api.mcsrvstat.us/2/".to_owned() + ip;
-
-    if args[1].trim().is_empty() {
+    if args.len() < 2 {
         println!("Please actually include an IP argument!");
         return;
     }
+
+    let raw = args[1].trim();
+
+    if raw.is_empty() {
+        println!("Please actually include an IP argument!");
+        return;
+    }
+
+    let ip = raw;
+    let base_url = "https://api.mcsrvstat.us/2/".to_owned() + ip;
 
     println!("Attempting to find details on '{}'...", ip);
 
