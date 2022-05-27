@@ -64,7 +64,7 @@ async fn main() {
                         println!("Players: ({}/{}) {}", players.online, players.max, names);
                     }
                 }
-                Err(err) => println!("Ah poop! The response didn't work with the struct!\n{}", err)
+                Err(err) => println!("Awh poop! The response didn't work with the struct!\n{}", err)
             }
         }
         reqwest::StatusCode::TOO_MANY_REQUESTS => {
